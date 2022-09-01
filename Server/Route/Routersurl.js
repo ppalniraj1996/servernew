@@ -1,22 +1,13 @@
-// urlId=>Id
-// orginalUrl=>longUrl;
-// ShortUrlModel=>UrlRouter
-// shorturl =>urlshort
-//  validUrl=>correctUrl
-//shortid=>id
-//GenerateShortUrl =>CreateShortUrl
-//baseUrl => Url
-//RedirectedToMain =>UrlRedir
-//RedirectRouter=>RedRoute
+
 const { Router } = require("express");
-const { UrlRedir } = require("../Controller/UrlRedirected");
+const { UrlRedir } = require("../controller/UrlRedirected");
 const RedRoute = Router();
 
 RedRoute.get("/:urlid", async (req, res) => {
   const { urlid } = req.params;
-  console.log(urlid);
+//  console.log(urlid);
 
-  const { message, status, data } = await RedRoute(urlid);
+  const { message, status, data } = await UrlRedir(urlid);
 
   if (status === "error") {
     return res.status(404).send({ message, status });

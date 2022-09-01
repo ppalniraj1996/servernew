@@ -1,31 +1,28 @@
-// urlId=>Id
-// orginalUrl=>longUrl;
-// ShortUrlModel=>UrlRouter
-// shorturl =>urlshort
-//  validUrl=>correctUrl
-//shortid=>id
-//GenerateShortUrl =>CreateShortUrl
-//baseUrl => Url
-//RedirectedToMain =>UrlRedir
+
 
 const { UrlRouter } = require("../Model/UrlModel");
-const UrlRedir = async (Id) => {
-  console.log(Id, "Done");
+let str =""
+const UrlRedir = async (urlid) => {
+  if(urlid!=="undefined"){
+    str=urlid
+     console.log(str); 
+  }
+
+
+  // console.log(urlid, "Check");
   try {
-    const findUrl = await UrlRouter.find({ Id });
-    console.log();
+    const findUrl = await UrlRouter.find({ Id: str });
+    console.log(findUrl);
     if (findUrl) {
       return {
         message: "Referesh",
         status: "success",
-        data: findUrl[0].longUrl,
+        data: findUrl[0].orginalUrl,
       };
-    } 
-    else {
+    } else {
       return { message: "No url ", status: "error" };
     }
-  }
-   catch (error) {
+  } catch (error) {
     return { message: "Invalid", status: "error" };
   }
 };

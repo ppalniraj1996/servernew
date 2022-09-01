@@ -33,7 +33,7 @@ app.use("/", RedRoute);
 const PORT = process.env.PORT;
 const mongoDB = process.env.Connection;
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   mongoose
     .connect(mongoDB, {
       useNewUrlParser: true,

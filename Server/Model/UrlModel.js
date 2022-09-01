@@ -1,6 +1,4 @@
-// Id=>urlId
-//  orginalUrl=>longUrl;
-// ShortUrlModel=>UrlRouter
+
 
 
 const mongoose = require("mongoose")

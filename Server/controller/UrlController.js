@@ -13,7 +13,8 @@ const validUrl = require("valid-url");
 const shortid = require("shortid");
 
 const CreateShortUrl = async (orginalUrl) => {
-  const Url = "https://localhost:8080.com/";
+  const Url = "https://mock12546.herokuapp.com/";
+
   const Id = shortid.generate();
   if (!validUrl.isUri(Url)) {
     return res.status(401).json("Invalid base URL");
@@ -30,11 +31,14 @@ const CreateShortUrl = async (orginalUrl) => {
         };
       } else {
         let MakeUrl = Url + Id;
+
         let Data = {
           orginalUrl,
-          urlshort: MakeUrl,
+          shortUrl: MakeUrl,
           Id,
         };
+        // console.log(MakeUrl);
+
         const newUrl = new UrlRouter(Data);
         newUrl.save();
         return { message: "url generated", status: "success", data: newUrl };
